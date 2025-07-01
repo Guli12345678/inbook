@@ -68,4 +68,24 @@ export class Admin extends Model<Admin, IAdminCreationAttr> {
     defaultValue: false,
   })
   declare is_active: boolean;
+
+  @ApiProperty({
+    example: "some-uuid-activation-link",
+    description: "Admin's activation link",
+  })
+  @Column({
+    type: DataType.STRING,
+    defaultValue: DataType.UUIDV4,
+  })
+  declare activation_link: string;
+
+  @ApiProperty({
+    example: "hashed_refresh_token",
+    description: "Admin's refresh token",
+  })
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,
+  })
+  declare refresh_token: string;
 }

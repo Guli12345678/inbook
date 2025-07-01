@@ -14,7 +14,7 @@ export class MailService {
     await this.mailerService.sendMail({
       to: user.email,
       subject: "Welcome to Inbook App!",
-      template: "test",
+      template: "./confirmation",
       context: {
         username: user.full_name,
         url,

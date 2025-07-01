@@ -23,7 +23,7 @@ import { join } from "path";
           template: {
             dir: join(__dirname, "templates"),
             adapter: new HandlebarsAdapter(),
-            template: "./test",
+            template: "confirmation",
             options: {
               strict: true,
             },

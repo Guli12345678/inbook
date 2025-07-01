@@ -38,6 +38,16 @@ export class UsersService {
     return this.userModel.findOne({ where: { activation_link } });
   }
 
+  async updateRefreshToken(id: number, refresh_token: string) {
+    const user = await this.userModel.update(
+      { refresh_token },
+      {
+        where: { id },
+      }
+    );
+    return user;
+  }
+
   update(id: number, updateUserDto: UpdateUserDto) {
     return this.userModel.update(updateUserDto, {
       where: { id },
