@@ -1,4 +1,5 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
+import { Book } from "../../books/entities/book.entity";
 
 interface IAuthorCreationAttr {
   full_name: string;
@@ -26,4 +27,7 @@ export class Author extends Model<Author, IAuthorCreationAttr> {
     type: DataType.STRING,
   })
   declare photo_url: string;
+
+  @HasMany(() => Book)
+  books: Book[];
 }

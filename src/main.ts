@@ -9,10 +9,11 @@ async function start() {
     const app = await NestFactory.create(AppModule);
     const config = new DocumentBuilder()
       .setTitle("Inbook Project")
-      .setDescription("This project involves NestsJS RESTFULL API")
+      .setDescription("This project involves NestJS RESTFULL API")
       .setVersion("1.0")
       .addTag("AccessToken, RefreshToken, Cookie, BOT, SMM, SendMail, Guards")
       .addBearerAuth()
+      .addServer("/api")
       .build();
 
     const document = SwaggerModule.createDocument(app, config);
