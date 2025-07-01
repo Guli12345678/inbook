@@ -22,6 +22,8 @@ import { BooksModule } from "./books/books.module";
 import { BookVersion } from "./book_version/entities/book_version.entity";
 import { Book } from "./books/entities/book.entity";
 import { AudioBook } from "./audio_book/entities/audio_book.entity";
+import { AudioPartsModule } from "./audio_parts/audio_parts.module";
+import { AudioPart } from "./audio_parts/entities/audio_part.entity";
 
 @Module({
   imports: [
@@ -53,6 +55,7 @@ import { AudioBook } from "./audio_book/entities/audio_book.entity";
         BookVersion,
         Book,
         AudioBook,
+        AudioPart,
       ],
       autoLoadModels: true,
       logging: false,
@@ -69,6 +72,7 @@ import { AudioBook } from "./audio_book/entities/audio_book.entity";
     BookVersionModule,
     AudioBookModule,
     BooksModule,
+    AudioPartsModule,
   ],
   controllers: [],
   providers: [],
