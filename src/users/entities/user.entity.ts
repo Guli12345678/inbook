@@ -1,5 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, Model, Table, HasMany } from "sequelize-typescript";
+import { Collection } from "../../collection/entities/collection.entity";
+import { BookMark } from "../../book_marks/entities/book_mark.entity";
+import { Subscription } from "../../subscription/entities/subscription.entity";
 
 interface IUserCreationAttr {
   full_name: string;
@@ -104,4 +107,13 @@ export class User extends Model<User, IUserCreationAttr> {
     type: DataType.SMALLINT,
   })
   declare birth_year: number;
+
+  @HasMany(() => Collection, "createdBy")
+  collections: Collection[];
+
+  @HasMany(() => BookMark)
+  bookMarks: BookMark[];
+
+  @HasMany(() => Subscription)
+  subscriptions: Subscription[];
 }

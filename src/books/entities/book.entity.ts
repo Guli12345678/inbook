@@ -10,6 +10,8 @@ import {
 import { BookVersion } from "../../book_version/entities/book_version.entity";
 import { Author } from "../../authors/entities/author.entity";
 import { ApiProperty } from "@nestjs/swagger";
+import { BookCollection } from "../../book_collection/entities/book_collection.entity";
+import { BookMark } from "../../book_marks/entities/book_mark.entity";
 
 interface IBookCreationId {
   published_year: Date;
@@ -46,4 +48,10 @@ export class Book extends Model<Book, IBookCreationId> {
   @ApiProperty({ type: () => Author, description: "Author" })
   @BelongsTo(() => Author)
   author: Author;
+
+  @HasMany(() => BookCollection)
+  bookCollections: BookCollection[];
+
+  @HasMany(() => BookMark)
+  bookMarks: BookMark[];
 }

@@ -21,9 +21,23 @@ async function start() {
     app.use(cookieParser());
     app.useGlobalPipes(new ValidationPipe());
     app.setGlobalPrefix("api");
-    await app.listen(PORT, () => {
-      console.log(`Server started at 🐷: http://localhost:${PORT}`);
-    });
+      await app.listen(PORT, () => {
+        console.log(
+          " + ====================================================================== +"
+        );
+        console.log(
+          `| |                                                                      | |`
+        );
+        console.log(
+          `| | 🚀             Server started at: http://localhost:${PORT}           🚀 | |`
+        );
+        console.log(
+          `| |                                                                      | |`
+        );
+        console.log(
+          " + ====================================================================== +"
+        );
+      });
   } catch (error) {
     console.log("Error:", error);
   }

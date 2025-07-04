@@ -24,6 +24,17 @@ import { Book } from "./books/entities/book.entity";
 import { AudioBook } from "./audio_book/entities/audio_book.entity";
 import { AudioPartsModule } from "./audio_parts/audio_parts.module";
 import { AudioPart } from "./audio_parts/entities/audio_part.entity";
+import { Bot } from "./bot/models/bot.model";
+import { Otp } from "./users/entities/otp.model";
+import { CollectionModule } from "./collection/collection.module";
+import { SubscriptionModule } from "./subscription/subscription.module";
+import { BookCollectionModule } from "./book_collection/book_collection.module";
+import { BookMarksModule } from "./book_marks/book_marks.module";
+import { BookMark } from "./book_marks/entities/book_mark.entity";
+import { BookCollection } from "./book_collection/entities/book_collection.entity";
+import { Subscription } from "./subscription/entities/subscription.entity";
+import { Collection } from "./collection/entities/collection.entity";
+import { Library } from "./bot/library/models/library.model";
 
 @Module({
   imports: [
@@ -56,10 +67,17 @@ import { AudioPart } from "./audio_parts/entities/audio_part.entity";
         Book,
         AudioBook,
         AudioPart,
+        Bot,
+        Otp,
+        BookMark,
+        BookCollection,
+        Subscription,
+        Collection,
+        Library,
       ],
       autoLoadModels: true,
       logging: false,
-      sync: { alter: true }, // force
+      sync: { force: true }, // force
     }),
     UsersModule,
     AuthModule,
@@ -73,6 +91,10 @@ import { AudioPart } from "./audio_parts/entities/audio_part.entity";
     AudioBookModule,
     BooksModule,
     AudioPartsModule,
+    CollectionModule,
+    SubscriptionModule,
+    BookCollectionModule,
+    BookMarksModule,
   ],
   controllers: [],
   providers: [],

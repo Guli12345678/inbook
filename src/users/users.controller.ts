@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  HttpCode,
 } from "@nestjs/common";
 import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dto/create-user.dto";
@@ -15,6 +16,8 @@ import { JwtUserAuthGuard } from "../common/guards/user.guard";
 import { SelfGuard } from "../common/guards/user-self.guard";
 import { JwtPremiumGuard } from "../common/guards/jwt-premium.guard";
 import { ApiTags, ApiOperation, ApiResponse } from "@nestjs/swagger";
+import { PhoneUserDto } from "./dto/phone-user.dto";
+import { VerifyOtpDto } from "./dto/verify-otp.dto";
 
 @ApiTags("Users")
 @Controller("users")
@@ -57,5 +60,19 @@ export class UsersController {
   @Delete(":id")
   remove(@Param("id") id: string) {
     return this.usersService.remove(+id);
+  }
+  @ApiOperation({ summary: "Send OTP to user" })
+  @ApiResponse({ status: 200, description: "User deleted" })
+  @HttpCode(200)
+  @Post("/new-otp")
+  newOtp(@Body() phoneUserDto: PhoneUserDto) {
+    return this.usersService.newOtp(phoneUserDto);
+  }
+  @ApiOperation({ summary: "Verify OTP to user" })
+  @ApiResponse({ status: 200, description: "User deleted" })
+  @HttpCode(200)
+  @Post("/verify-otp")
+  verifyOtp(@Body() verifyOtpDto: VerifyOtpDto) {
+    return this.usersService.verifyOtp(verifyOtpDto);
   }
 }
